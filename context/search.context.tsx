@@ -5,6 +5,8 @@ type SearchQueryType = {
   query: string;
   toggleModal: () => void;
   openModal: boolean;
+  queryHistory: string[] | null;
+  updateSearchHistory: (history: string) => void;
 };
 
 export const SearchContext = createContext<SearchQueryType | null>(null);
@@ -12,10 +14,18 @@ export const SearchContext = createContext<SearchQueryType | null>(null);
 export const SearchQueryContextProvider = ({ children }: { children: any }) => {
   const [query, setQuery] = useState("");
   const [openModal, setOpenModal] = useState<boolean>(false);
+  const [queryHistory, setQueryHistory] = useState<string[]>([]);
 
   //update query
   const updateQuery = (query: string) => {
     setQuery(query);
+    toggleModal();
+    updateSearchHistory(query);
+  };
+
+  //update search history
+  const updateSearchHistory = (history: string) => {
+    setQueryHistory((prev) => [...prev, history]);
   };
 
   //toggle modal
@@ -30,6 +40,8 @@ export const SearchQueryContextProvider = ({ children }: { children: any }) => {
         toggleModal,
         query,
         openModal,
+        queryHistory,
+        updateSearchHistory,
       }}
     >
       {children}

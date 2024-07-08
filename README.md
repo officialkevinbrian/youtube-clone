@@ -27,11 +27,13 @@ Tech Stack
 
 ✅ Prepare UI Assets & Icon & Color Paletes 
 
-SignUp & Login Screen & SplashScreen
+✅ SignUp & Login Screen & SplashScreen
 
-Home Screen (Video Listing)
+✅ Home Screen (Video Listing)
 
-Video Screen
+✅ Search History
+
+Video Screen Playback
 
 User Profile Screen
 

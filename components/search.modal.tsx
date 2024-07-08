@@ -9,17 +9,26 @@ import {
   TouchableHighlight,
   TouchableOpacity,
 } from "react-native";
-import { Button, Input, View, XStack } from "tamagui";
+import { Button, Input, Stack, Text, View, XStack } from "tamagui";
 import { TabBarIcon } from "./navigation/TabBarIcon";
 import { isEmpty } from "lodash";
 import { router } from "expo-router";
+import PlaybackIcon from "@/assets/icons/Play Back.svg";
+import JumpToIcon from "@/assets/icons/Jump.svg";
 
 function SearchModal() {
   const searchContext = useContext(SearchContext);
   const [localQuery, setLocalQuery] = useState<string>("");
+
   return (
     <View flex={1}>
-      <Modal visible={searchContext?.openModal}>
+      <Modal
+        visible={searchContext?.openModal}
+        style={{
+          flex: 1,
+          padding: 10,
+        }}
+      >
         <XStack alignItems="center" gap={"$2"} p={"$3"}>
           <TouchableOpacity onPress={() => searchContext?.toggleModal()}>
             <TabBarIcon Icon={ArrowLeft} />
@@ -37,17 +46,21 @@ function SearchModal() {
           >
             <TextInput
               placeholder="Search on Youtube"
-              style={{ flexShrink: 1, borderWidth: 0, paddingVertical: 5 }}
+              style={{
+                borderWidth: 0,
+                paddingVertical: 5,
+                display: "flex",
+                minWidth: "58%",
+              }}
               onChangeText={(text) => setLocalQuery(text)}
             />
             <TouchableHighlight
               onPress={() => {
                 searchContext?.updateQuery(localQuery);
-                searchContext?.toggleModal();
                 router.navigate("/search");
               }}
             >
-              <TabBarIcon Icon={SearchIcon} width={20} height={20} flex={0} />
+              <TabBarIcon Icon={SearchIcon} width={20} height={20} />
             </TouchableHighlight>
           </XStack>
 
@@ -57,6 +70,21 @@ function SearchModal() {
             </Button>
           )}
         </XStack>
+
+        <Stack padding={"$3"} gap={"$3"}>
+          {searchContext?.queryHistory?.map((item, index) => (
+            <TouchableOpacity
+              key={index}
+              onPress={() => searchContext.updateQuery(item)}
+            >
+              <XStack gap={"$2"}>
+                <TabBarIcon Icon={PlaybackIcon} width={20} height={20} />
+                <Text flex={1}>{item}</Text>
+                <TabBarIcon Icon={JumpToIcon} width={20} height={20} />
+              </XStack>
+            </TouchableOpacity>
+          ))}
+        </Stack>
       </Modal>
     </View>
   );
