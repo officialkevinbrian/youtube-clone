@@ -1,5 +1,5 @@
-import { Tabs } from "expo-router";
-import React from "react";
+import { router, Tabs } from "expo-router";
+import React, { useEffect } from "react";
 
 import UploadIcon from "@/assets/icons/Add.svg";
 import HomeIcon from "@/assets/icons/Home.svg";
@@ -12,7 +12,6 @@ import { useColorScheme } from "@/hooks/useColorScheme";
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
-
   return (
     <Tabs
       screenOptions={{
