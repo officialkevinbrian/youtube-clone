@@ -43,10 +43,10 @@ const VideoCard = ({ video }: { video: VideoInterface }) => {
         </Avatar>
 
         <YStack flex={1} gap={"$0"}>
-          <Text>Config 2022 Opening Keynot - Dylan Field</Text>
+          <Text fontWeight={"bold"}>{video?.video_title}</Text>
           <XStack>
             <Text color={"$gray9"} fontSize={"$1"}>
-              Figma - 47K Views - 7 Days Ago
+              {`${video?.channel?.name} - ${video?.views} - ${video?.published_at}`}
             </Text>
           </XStack>
         </YStack>
