@@ -33,7 +33,7 @@ Tech Stack
 
 ✅ Search History
 
-Video Screen Playback
+✅ Video Screen Playback
 
 User Profile Screen
 
