@@ -1,8 +1,9 @@
 import React from "react";
 import { ScrollView, Text, View } from "tamagui";
 import videoListing from "@/data/video-list.json";
-import VideoCard from "./video-card";
+import VideoCard from "../ui/video-card";
 import { VideoInterface } from "@/type/video.type";
+import ShortVideosWrapper from "./short-videos.wrapper";
 
 function HomePlaylistWrapper() {
   if (!videoListing) return <Text>No Videos</Text>;
@@ -14,9 +15,12 @@ function HomePlaylistWrapper() {
         pb: 20,
       }}
     >
-      {videoListing.map((video: VideoInterface) => (
-        <VideoCard video={video} />
-      ))}
+      {videoListing.map((video: VideoInterface, index: number) => {
+        if (index == 1) {
+          return <ShortVideosWrapper />;
+        }
+        return <VideoCard video={video} />;
+      })}
     </ScrollView>
   );
 }
