@@ -9,6 +9,7 @@ import { useColorScheme } from "@/hooks/useColorScheme";
 //Tamagui kit COnfig
 import { TamaguiProvider, createTamagui } from "tamagui";
 import { config } from "@tamagui/config/v3";
+import { SearchQueryContextProvider } from "@/context/search.context";
 
 // you usually export this from a tamagui.config.ts file
 const tamaguiConfig = createTamagui(config);
@@ -41,10 +42,12 @@ export default function RootLayout() {
 
   return (
     <TamaguiProvider config={tamaguiConfig}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="+not-found" />
-      </Stack>
+      <SearchQueryContextProvider>
+        <Stack>
+          <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+          <Stack.Screen name="+not-found" />
+        </Stack>
+      </SearchQueryContextProvider>
     </TamaguiProvider>
   );
 }
