@@ -3,13 +3,7 @@
 import { SVGProps } from "react";
 import { View } from "react-native";
 
-export const TabBarIcon = ({
-  Icon,
-  ...rest
-}: {
-  rest?: any;
-  Icon: SVGProps<any>;
-}) => {
+export const TabBarIcon = ({ Icon, ...rest }: { rest?: any; Icon: any }) => {
   return (
     <View>
       <Icon {...rest} />
