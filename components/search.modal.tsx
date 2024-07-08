@@ -12,10 +12,11 @@ import {
 import { Button, Input, View, XStack } from "tamagui";
 import { TabBarIcon } from "./navigation/TabBarIcon";
 import { isEmpty } from "lodash";
+import { router } from "expo-router";
 
 function SearchModal() {
   const searchContext = useContext(SearchContext);
-  const [localQuery, setLocalQuery] = useState<string | null>("");
+  const [localQuery, setLocalQuery] = useState<string>("");
   return (
     <View flex={1}>
       <Modal visible={searchContext?.openModal}>
@@ -40,7 +41,11 @@ function SearchModal() {
               onChangeText={(text) => setLocalQuery(text)}
             />
             <TouchableHighlight
-              onPress={() => searchContext?.updateQuery(localQuery)}
+              onPress={() => {
+                searchContext?.updateQuery(localQuery);
+                searchContext?.toggleModal();
+                router.navigate("/search");
+              }}
             >
               <TabBarIcon Icon={SearchIcon} width={20} height={20} flex={0} />
             </TouchableHighlight>
