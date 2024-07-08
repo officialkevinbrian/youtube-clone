@@ -23,7 +23,7 @@ Tech Stack
 
 ## TODO UI
 
-Setup Expo Environment & Install Dependencies (Supabase & Tamagui UI Kit)
+✅ Setup Expo Environment & Install Dependencies (Supabase & Tamagui UI Kit)
 
 Prepare UI Assets & Icon & Color Paletes 
 
