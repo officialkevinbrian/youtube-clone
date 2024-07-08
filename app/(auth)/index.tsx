@@ -1,4 +1,4 @@
-import { Stack } from "expo-router";
+import { router, Stack } from "expo-router";
 import React from "react";
 import { useWindowDimensions } from "react-native";
 import { Button, Heading, Image, Text, View, XStack, YStack } from "tamagui";
@@ -45,10 +45,21 @@ const AuthHomeScreen: React.FC = () => {
             <Text color={"$gray10"}>The most streaming platform today!</Text>
           </View>
           <XStack borderWidth={1} borderRadius={"$12"}>
-            <Button borderRadius={"$12"} bg={"black"} color={"white"} flex={1}>
+            <Button
+              onPress={() => router.push("/sign-in")}
+              borderRadius={"$12"}
+              bg={"black"}
+              color={"white"}
+              flex={1}
+            >
               Sign up
             </Button>
-            <Button borderRadius={"$12"} flex={1} bg={"$colorTransparent"}>
+            <Button
+              onPress={() => router.push("/sign-in")}
+              borderRadius={"$12"}
+              flex={1}
+              bg={"$colorTransparent"}
+            >
               Sign in
             </Button>
           </XStack>

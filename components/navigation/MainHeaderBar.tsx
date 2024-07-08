@@ -8,6 +8,7 @@ import { TabBarIcon } from "./TabBarIcon";
 import YoutubeIconLabel from "@/assets/icons/YoutubeIconLabel.svg";
 import { SearchContext } from "@/context/search.context";
 import SearchModal from "../search.modal";
+import { router } from "expo-router";
 
 export default function MainHeaderBar() {
   const searchContext = useContext(SearchContext);
@@ -39,7 +40,11 @@ export default function MainHeaderBar() {
               <TabBarIcon Icon={item.icon} width={20} />
             </TouchableOpacity>
           ))}
-          <Avatar circular size="$2.5">
+          <Avatar
+            circular
+            size="$2.5"
+            onPress={() => router.navigate("/sign-in")}
+          >
             <Avatar.Image
               accessibilityLabel="Cam"
               src="https://images.unsplash.com/photo-1548142813-c348350df52b?&w=150&h=150&dpr=2&q=80"
