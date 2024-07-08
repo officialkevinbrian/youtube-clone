@@ -7,9 +7,9 @@ import "react-native-reanimated";
 import { useColorScheme } from "@/hooks/useColorScheme";
 
 //Tamagui kit COnfig
-import { TamaguiProvider, createTamagui } from "tamagui";
-import { config } from "@tamagui/config/v3";
 import { SearchQueryContextProvider } from "@/context/search.context";
+import { config } from "@tamagui/config/v3";
+import { TamaguiProvider, createTamagui } from "tamagui";
 
 // you usually export this from a tamagui.config.ts file
 const tamaguiConfig = createTamagui(config);
@@ -27,7 +27,8 @@ SplashScreen.preventAutoHideAsync();
 export default function RootLayout() {
   const colorScheme = useColorScheme();
   const [loaded] = useFonts({
-    SpaceMono: require("../assets/fonts/SpaceMono-Regular.ttf"),
+    Inter: require("@tamagui/font-inter/otf/Inter-Medium.otf"),
+    InterBold: require("@tamagui/font-inter/otf/Inter-Bold.otf"),
   });
 
   useEffect(() => {
