@@ -57,7 +57,6 @@ function SearchModal() {
             <TouchableHighlight
               onPress={() => {
                 searchContext?.updateQuery(localQuery);
-                router.navigate("/search");
               }}
             >
               <TabBarIcon Icon={SearchIcon} width={20} height={20} />

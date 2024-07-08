@@ -1,3 +1,4 @@
+import { router } from "expo-router";
 import { Children, createContext, useState } from "react";
 
 type SearchQueryType = {
@@ -21,6 +22,7 @@ export const SearchQueryContextProvider = ({ children }: { children: any }) => {
     setQuery(query);
     toggleModal();
     updateSearchHistory(query);
+    router.navigate("/(app)/search");
   };
 
   //update search history
