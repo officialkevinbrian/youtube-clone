@@ -25,9 +25,9 @@ Tech Stack
 
 ✅ Setup Expo Environment & Install Dependencies (Supabase & Tamagui UI Kit)
 
-Prepare UI Assets & Icon & Color Paletes 
+✅ Prepare UI Assets & Icon & Color Paletes 
 
-SignUp & Login Screen
+SignUp & Login Screen & SplashScreen
 
 Home Screen (Video Listing)
 
