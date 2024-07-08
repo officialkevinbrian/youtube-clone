@@ -1,50 +1,47 @@
-# Welcome to your Expo app 👋
+# YouTube Clone 👋
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+## Assignment
 
-## Get started
+Build a YouTube clone with the following features:
 
-1. Install dependencies
+● Email-based login screen
+● Home screen with a list of videos
+● Video screen with playback functionality
+● Profile screen with basic settings (name, profile photo, etc.)
+● Search functionality (just text search is fine)
+Tech Stack
+● Frontend: React Native
+● Backend: Supabase
+○ Implement Supabase authentication
+○ Use Supabase storage for storing videos
+○ Use Supabase database (Postgres) for storing user data
 
-   ```bash
-   npm install
-   ```
+## Expected Output
+● Public GitHub repository URL with code & README
+● Publicly accessible demo video (YouTube/Vimeo/Loom)
 
-2. Start the app
 
-   ```bash
-    npx expo start
-   ```
+## TODO UI
 
-In the output, you'll find options to open the app in a
+Setup Expo Environment & Install Dependencies (Supabase & Tamagui UI Kit)
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+Prepare UI Assets & Icon & Color Paletes 
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+SignUp & Login Screen
 
-## Get a fresh project
+Home Screen (Video Listing)
 
-When you're ready, run:
+Video Screen
 
-```bash
-npm run reset-project
-```
+User Profile Screen
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## TODO Functionalities 
 
-## Learn more
+Authentication with Email (Supabase)
 
-To learn more about developing your project with Expo, look at the following resources:
+Store User Data
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+Upload & Store User Videos
 
-## Join the community
 
-Join our community of developers creating universal apps.
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
