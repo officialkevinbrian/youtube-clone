@@ -1,14 +1,14 @@
 import { Tabs } from "expo-router";
 import React from "react";
 
+import UploadIcon from "@/assets/icons/Add.svg";
+import HomeIcon from "@/assets/icons/Home.svg";
+import LibraryIcon from "@/assets/icons/library.svg";
+import ShortIcon from "@/assets/icons/Short.svg";
+import SubscriptionIcon from "@/assets/icons/Subscriptions.svg";
 import { TabBarIcon } from "@/components/navigation/TabBarIcon";
 import { Colors } from "@/constants/Colors";
 import { useColorScheme } from "@/hooks/useColorScheme";
-import HomeIcon from "@/assets/icons/Home.svg";
-import ShortIcon from "@/assets/icons/Short.svg";
-import UploadIcon from "@/assets/icons/Add.svg";
-import LibraryIcon from "@/assets/icons/library.svg";
-import SubscriptionIcon from "@/assets/icons/Subscriptions.svg";
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
@@ -26,6 +26,7 @@ export default function TabLayout() {
           name={navItem.name}
           options={{
             title: navItem.title,
+
             tabBarIcon: ({ color, focused }) => (
               <TabBarIcon Icon={navItem.icon} width={30} height={30} />
             ),

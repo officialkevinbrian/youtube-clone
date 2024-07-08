@@ -13,9 +13,9 @@ function HomePlaylistWrapper() {
     <ScrollableWrapper>
       {videoListing.map((video: VideoInterface, index: number) => {
         if (index == 1) {
-          return <ShortVideosWrapper />;
+          return <ShortVideosWrapper key={index} />;
         }
-        return <VideoCard video={video} />;
+        return <VideoCard video={video} key={index} />;
       })}
     </ScrollableWrapper>
   );

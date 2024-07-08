@@ -1,12 +1,12 @@
-import React, { useContext, useEffect, useState } from "react";
-import videosData from "@/data/video-list.json";
-import VideoCard from "@/components/ui/video-card";
-import { VideoInterface } from "@/type/video.type";
-import { SearchContext } from "@/context/search.context";
-import { Stack } from "expo-router";
 import MainHeaderBar from "@/components/navigation/MainHeaderBar";
+import VideoCard from "@/components/ui/video-card";
+import { SearchContext } from "@/context/search.context";
+import videosData from "@/data/video-list.json";
+import { VideoInterface } from "@/type/video.type";
+import { Stack } from "expo-router";
 import { isEmpty } from "lodash";
-import { Heading, ScrollView, Text, View } from "tamagui";
+import React, { useContext, useEffect, useState } from "react";
+import { Heading, ScrollView, View } from "tamagui";
 
 const SearchScreen = () => {
   const [data, setData] = useState<VideoInterface[] | null>([]);
