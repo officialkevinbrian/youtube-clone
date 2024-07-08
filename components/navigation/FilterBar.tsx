@@ -5,7 +5,7 @@ import { TabBarIcon } from "./TabBarIcon";
 
 const FilterListingTab = () => {
   return (
-    <View>
+    <View py={"$2.5"}>
       <ScrollView
         showsHorizontalScrollIndicator={false}
         horizontal={true}

@@ -1,0 +1,112 @@
+[
+  {
+    "banner_img": "https://i.ytimg.com/vi/EgGrPReAdDw/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBoECeii-d9KqbrIcBP1lWFBghEtg",
+    "duration": "12:40",
+    "video_title": "Config 2022 Opening Keynote - Dylan Field",
+    "channel": {
+      "profile_picture": "https://images.unsplash.com/photo-1531384441138-2736e62e0919?&w=100&h=100&dpr=2&q=80",
+      "name": "Nate Wienert",
+      "views": "47K Views",
+      "published_at": "7 Days Ago"
+    }
+  },
+  {
+    "banner_img": "https://i.ytimg.com/vi/abc123/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCDEFGHIJK",
+    "duration": "10:05",
+    "video_title": "Understanding JavaScript Closures",
+    "channel": {
+      "profile_picture": "https://images.unsplash.com/photo-1518806118471-f28b20a1d79d?&w=100&h=100&dpr=2&q=80",
+      "name": "Jane Doe",
+      "views": "123K Views",
+      "published_at": "3 Days Ago"
+    }
+  },
+  {
+    "banner_img": "https://i.ytimg.com/vi/def456/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLMNOPQRST",
+    "duration": "8:30",
+    "video_title": "React Hooks Tutorial",
+    "channel": {
+      "profile_picture": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?&w=100&h=100&dpr=2&q=80",
+      "name": "John Smith",
+      "views": "89K Views",
+      "published_at": "5 Days Ago"
+    }
+  },
+  {
+    "banner_img": "https://i.ytimg.com/vi/ghi789/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLUVWXYZ123",
+    "duration": "15:45",
+    "video_title": "CSS Grid Layout Crash Course",
+    "channel": {
+      "profile_picture": "https://images.unsplash.com/photo-1502764613149-7f1d229e2300?&w=100&h=100&dpr=2&q=80",
+      "name": "Alex Johnson",
+      "views": "65K Views",
+      "published_at": "1 Week Ago"
+    }
+  },
+  {
+    "banner_img": "https://i.ytimg.com/vi/jkl101/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLXYZ789456",
+    "duration": "20:10",
+    "video_title": "Node.js Best Practices",
+    "channel": {
+      "profile_picture": "https://images.unsplash.com/photo-1519340333755-d29c6b72f8eb?&w=100&h=100&dpr=2&q=80",
+      "name": "Emily Davis",
+      "views": "150K Views",
+      "published_at": "2 Weeks Ago"
+    }
+  },
+  {
+    "banner_img": "https://i.ytimg.com/vi/mno112/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CL789XYZ654",
+    "duration": "25:50",
+    "video_title": "Vue.js for Beginners",
+    "channel": {
+      "profile_picture": "https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?&w=100&h=100&dpr=2&q=80",
+      "name": "Michael Brown",
+      "views": "78K Views",
+      "published_at": "4 Days Ago"
+    }
+  },
+  {
+    "banner_img": "https://i.ytimg.com/vi/pqr131/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CL654321ZYX",
+    "duration": "9:25",
+    "video_title": "Python Programming Full Course",
+    "channel": {
+      "profile_picture": "https://images.unsplash.com/photo-1509592149233-56ce7efc58df?&w=100&h=100&dpr=2&q=80",
+      "name": "Sarah Wilson",
+      "views": "200K Views",
+      "published_at": "1 Month Ago"
+    }
+  },
+  {
+    "banner_img": "https://i.ytimg.com/vi/stu141/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CL09876ZYXW",
+    "duration": "18:20",
+    "video_title": "Angular in Depth",
+    "channel": {
+      "profile_picture": "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?&w=100&h=100&dpr=2&q=80",
+      "name": "David Martinez",
+      "views": "54K Views",
+      "published_at": "2 Weeks Ago"
+    }
+  },
+  {
+    "banner_img": "https://i.ytimg.com/vi/vwx151/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CL13579ZYXW",
+    "duration": "30:00",
+    "video_title": "Advanced TypeScript Tips",
+    "channel": {
+      "profile_picture": "https://images.unsplash.com/photo-1502764613149-7f1d229e2300?&w=100&h=100&dpr=2&q=80",
+      "name": "Laura Garcia",
+      "views": "32K Views",
+      "published_at": "3 Days Ago"
+    }
+  },
+  {
+    "banner_img": "https://i.ytimg.com/vi/yza161/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CL02468ZYXW",
+    "duration": "5:15",
+    "video_title": "Kotlin for Android Development",
+    "channel": {
+      "profile_picture": "https://images.unsplash.com/photo-1502764613149-7f1d229e2300?&w=100&h=100&dpr=2&q=80",
+      "name": "Tom Clark",
+      "views": "45K Views",
+      "published_at": "5 Days Ago"
+    }
+  }
+]
