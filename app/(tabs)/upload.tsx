@@ -1,7 +1,8 @@
 import React from "react";
+import { Text } from "react-native";
 
 function UploadScreen() {
-  return <div>UploadScreen</div>;
+  return <Text>UploadScreen</Text>;
 }
 
 export default UploadScreen;

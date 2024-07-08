@@ -1,7 +1,8 @@
 import React from "react";
+import { Text } from "react-native";
 
 function ShortsScreen() {
-  return <div>ShortsScreen</div>;
+  return <Text>ShortsScreen</Text>;
 }
 
 export default ShortsScreen;

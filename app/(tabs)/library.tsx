@@ -1,7 +1,8 @@
 import React from "react";
+import { Text } from "react-native";
 
 function LibraryScreen() {
-  return <div>LibraryScreen</div>;
+  return <Text>LibraryScreen</Text>;
 }
 
 export default LibraryScreen;
