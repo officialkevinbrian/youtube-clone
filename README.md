@@ -35,7 +35,7 @@ Tech Stack
 
 ✅ Video Screen Playback
 
-User Profile Screen
+✅ User Profile Screen
 
 ## TODO Functionalities 
 
