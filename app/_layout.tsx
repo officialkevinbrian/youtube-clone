@@ -3,6 +3,7 @@ import { Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
 import "react-native-reanimated";
+import { PortalProvider } from "tamagui";
 
 import { useColorScheme } from "@/hooks/useColorScheme";
 
@@ -44,12 +45,17 @@ export default function RootLayout() {
   return (
     <TamaguiProvider config={tamaguiConfig}>
       <SearchQueryContextProvider>
-        <Stack>
-          <Stack.Screen name="(app)/(tabs)" options={{ headerShown: false }} />
-          <Stack.Screen name="(auth)/index" />
-          <Stack.Screen name="(auth)/sign-in" />
-          <Stack.Screen name="+not-found" />
-        </Stack>
+        <PortalProvider shouldAddRootHost>
+          <Stack>
+            <Stack.Screen
+              name="(app)/(tabs)"
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen name="(auth)/index" />
+            <Stack.Screen name="(auth)/sign-in" />
+            <Stack.Screen name="+not-found" />
+          </Stack>
+        </PortalProvider>
       </SearchQueryContextProvider>
     </TamaguiProvider>
   );
