@@ -43,7 +43,7 @@ Tech Stack
 
 ✅ Implement forms & Data Collection on all inputs 
 
-Authentication with Email (Supabase)
+✅ Authentication with Email (Supabase)
 
 Store User Data
 
