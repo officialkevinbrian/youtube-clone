@@ -46,7 +46,7 @@ const AuthHomeScreen: React.FC = () => {
           </View>
           <XStack borderWidth={1} borderRadius={"$12"}>
             <Button
-              onPress={() => router.push("/sign-in")}
+              onPress={() => router.push("/sign-up")}
               borderRadius={"$12"}
               bg={"black"}
               color={"white"}

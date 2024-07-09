@@ -11,6 +11,7 @@ import { useColorScheme } from "@/hooks/useColorScheme";
 import { SearchQueryContextProvider } from "@/context/search.context";
 import { config } from "@tamagui/config/v3";
 import { TamaguiProvider, createTamagui } from "tamagui";
+import AuthProvider from "@/providers/AuthProvider";
 
 // you usually export this from a tamagui.config.ts file
 const tamaguiConfig = createTamagui(config);
@@ -46,15 +47,17 @@ export default function RootLayout() {
     <TamaguiProvider config={tamaguiConfig}>
       <SearchQueryContextProvider>
         <PortalProvider shouldAddRootHost>
-          <Stack>
-            <Stack.Screen
-              name="(app)/(tabs)"
-              options={{ headerShown: false }}
-            />
-            <Stack.Screen name="(auth)/index" />
-            <Stack.Screen name="(auth)/sign-in" />
-            <Stack.Screen name="+not-found" />
-          </Stack>
+          <AuthProvider>
+            <Stack>
+              <Stack.Screen
+                name="(app)/(tabs)"
+                options={{ headerShown: false }}
+              />
+              <Stack.Screen name="(auth)/index" />
+              <Stack.Screen name="(auth)/sign-in" />
+              <Stack.Screen name="+not-found" />
+            </Stack>
+          </AuthProvider>
         </PortalProvider>
       </SearchQueryContextProvider>
     </TamaguiProvider>
