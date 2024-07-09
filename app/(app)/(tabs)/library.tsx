@@ -1,8 +1,9 @@
+import EmptyScreen from "@/components/ui/empty-screen";
 import React from "react";
 import { Text } from "react-native";
 
 function LibraryScreen() {
-  return <Text>LibraryScreen</Text>;
+  return <EmptyScreen />;
 }
 
 export default LibraryScreen;
