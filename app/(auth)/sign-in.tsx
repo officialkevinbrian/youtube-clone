@@ -45,7 +45,13 @@ const SignInScreen: React.FC = () => {
 
 export default SignInScreen;
 
-const InputWithLabel = ({ label, ...rest }: { label: string; rest?: any }) => {
+export const InputWithLabel = ({
+  label,
+  ...rest
+}: {
+  label: string;
+  rest?: any;
+}) => {
   return (
     <YStack>
       <Text>{label}</Text>

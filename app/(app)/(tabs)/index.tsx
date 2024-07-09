@@ -6,13 +6,13 @@ import React, { useEffect } from "react";
 import { XStack } from "tamagui";
 
 function HomeScreen() {
-  useEffect(() => {
-    return () => {
-      if (true) {
-        return router.navigate("/(auth)/index");
-      }
-    };
-  }, []);
+  // useEffect(() => {
+  //   return () => {
+  //     if (true) {
+  //       return router.navigate("/(auth)/index");
+  //     }
+  //   };
+  // }, []);
 
   return (
     <>
