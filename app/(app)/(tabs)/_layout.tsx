@@ -9,14 +9,19 @@ import SubscriptionIcon from "@/assets/icons/Subscriptions.svg";
 import { TabBarIcon } from "@/components/navigation/TabBarIcon";
 import { Colors } from "@/constants/Colors";
 import { useColorScheme } from "@/hooks/useColorScheme";
+import { Pressable } from "react-native";
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? "light"].tint,
+        tabBarActiveTintColor: "black",
         headerShown: false,
+        tabBarHideOnKeyboard: true,
+        tabBarLabelStyle: {
+          paddingVertical: 4,
+        },
       }}
     >
       {navTabs.map((navItem) => (
@@ -25,9 +30,19 @@ export default function TabLayout() {
           name={navItem.name}
           options={{
             title: navItem.title,
-
+            tabBarStyle: {
+              backgroundColor: "white",
+            },
+            tabBarIconStyle: {
+              backgroundColor: "red",
+            },
             tabBarIcon: ({ color, focused }) => (
-              <TabBarIcon Icon={navItem.icon} width={30} height={30} />
+              <TabBarIcon
+                Icon={navItem.icon}
+                width={25}
+                height={25}
+                padding={10}
+              />
             ),
           }}
         />
@@ -51,6 +66,7 @@ export const navTabs = [
   },
   {
     id: 3,
+    labelHidden: true,
     icon: UploadIcon,
     name: "upload",
     title: "Explore",
