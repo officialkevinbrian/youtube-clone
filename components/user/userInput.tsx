@@ -57,8 +57,6 @@ const UserInput = ({ data }: { data: userDataType }) => {
     });
   };
 
-  console.log("------------->", data?.fieldName);
-
   return (
     <>
       {openSheet && <EditInputSheet open={openSheet} toggle={toggleSheet} />}

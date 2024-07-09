@@ -24,9 +24,14 @@ const AuthProvider = ({ children }: any) => {
 
       const { data: authListener } = supabase.auth.onAuthStateChange(
         async (event, session) => {
-          console.log("Supabase auth Event", session);
+          // console.log("session✅✅", session);
+          // console.log("Event✅✅", event);
           setSession(session);
           setUser(session ? true : false);
+
+          if (segments[0].includes("auth") && session) {
+            return router.navigate("/(tabs)");
+          }
         }
       );
     })();

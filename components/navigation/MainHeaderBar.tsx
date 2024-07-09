@@ -9,9 +9,11 @@ import YoutubeIconLabel from "@/assets/icons/YoutubeIconLabel.svg";
 import { SearchContext } from "@/context/search.context";
 import SearchModal from "../search.modal";
 import { router } from "expo-router";
+import { AuthContext } from "@/providers/AuthProvider";
 
 export default function MainHeaderBar() {
   const searchContext = useContext(SearchContext);
+  const { session } = useContext(AuthContext);
 
   const iconListing = [
     { id: 1, icon: WaveIcon, handler: () => {} },
@@ -43,7 +45,7 @@ export default function MainHeaderBar() {
           <Avatar circular size="$2.5" onPress={() => router.navigate("/user")}>
             <Avatar.Image
               accessibilityLabel="Cam"
-              src="https://images.unsplash.com/photo-1548142813-c348350df52b?&w=150&h=150&dpr=2&q=80"
+              src={session?.user?.user_metadata?.profile_img}
             />
             <Avatar.Fallback backgroundColor="black" />
           </Avatar>

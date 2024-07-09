@@ -1,11 +1,12 @@
 import LinkIcon from "@/assets/icons/Link.svg";
 import RemarkIcon from "@/assets/icons/Remarks.svg";
 import { useLocalSearchParams } from "expo-router";
-import React from "react";
+import React, { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
-import { Button, Input, Sheet, Stack, Text, XStack } from "tamagui";
+import { Button, Input, Sheet, Spinner, Stack, Text, XStack } from "tamagui";
 import TextInputCustom from "../TextInputWithLabel";
 import { TabBarIcon } from "../navigation/TabBarIcon";
+import { supabase } from "@/config/supabase.config";
 
 const EditInputSheet = ({ open, toggle }: { open: boolean; toggle?: any }) => {
   const params = useLocalSearchParams() as unknown as any;
@@ -15,9 +16,30 @@ const EditInputSheet = ({ open, toggle }: { open: boolean; toggle?: any }) => {
     },
   });
 
+  //loading state
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
   //form handler
-  const handleSubmit = (data: any) => {
-    alert("Submitted");
+  const handleSubmit = async (inputData: any) => {
+    // alert("Submitted");
+
+    setLoading(true);
+
+    const { data, error } = await supabase.auth.updateUser({
+      data: inputData,
+    });
+
+    setLoading(false);
+
+    if (data) {
+      alert("User Updated " + params?.fieldName);
+      toggle();
+    }
+
+    if (error) {
+      setError(error?.message ?? error?.cause);
+    }
   };
 
   return (
@@ -43,24 +65,27 @@ const EditInputSheet = ({ open, toggle }: { open: boolean; toggle?: any }) => {
             defaultValue={params?.currentValue ?? params.value}
             control={form.control}
             render={({ field: { onChange, onBlur, value } }) => (
-              <TextInputCustom.Root gap={"$2"}>
-                <Text fontWeight={"bold"} fontSize={"$7"}>
-                  {params?.labelName}
-                </Text>
-                <Input
-                  onChangeText={onChange}
-                  onBlur={onBlur}
-                  // autoFocus={true}
-                  value={value}
-                  borderColor={"black"}
-                  borderWidth={"$1"}
-                  bg={"white"}
-                  focusStyle={{
-                    borderColor: "black",
-                    borderWidth: "$1",
-                  }}
-                />
-              </TextInputCustom.Root>
+              <>
+                <TextInputCustom.Root gap={"$2"}>
+                  <Text fontWeight={"bold"} fontSize={"$7"}>
+                    {params?.labelName}
+                  </Text>
+                  <Input
+                    onChangeText={onChange}
+                    onBlur={onBlur}
+                    // autoFocus={true}
+                    value={value}
+                    borderColor={"black"}
+                    borderWidth={"$1"}
+                    bg={"white"}
+                    focusStyle={{
+                      borderColor: "black",
+                      borderWidth: "$1",
+                    }}
+                  />
+                </TextInputCustom.Root>
+                {!error && <Text color={"red"}>{error}</Text>}
+              </>
             )}
           />
 
@@ -91,8 +116,9 @@ const EditInputSheet = ({ open, toggle }: { open: boolean; toggle?: any }) => {
             bg={"black"}
             color={"white"}
             borderRadius={"$12"}
+            disabled={loading}
           >
-            Save
+            {loading ? <Spinner color={"white"} /> : "Save"}
           </Button>
         </Stack>
       </Sheet.Frame>

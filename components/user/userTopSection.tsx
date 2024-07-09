@@ -1,23 +1,39 @@
 import CameraIcon from "@/assets/icons/Camera_bold.svg";
+import { supabase } from "@/config/supabase.config";
+import { AuthContext } from "@/providers/AuthProvider";
+import generatePublicUrls from "@/utils/generatePublicUrls";
+import { convertToArrayBuffer } from "@/utils/toArrayBuffer";
 import * as ImagePicker from "expo-image-picker";
-import React, { useState } from "react";
+import { router } from "expo-router";
+import React, { useContext, useState } from "react";
 import { useForm, useWatch } from "react-hook-form";
 import {
   ImageBackground,
   TouchableOpacity,
   useWindowDimensions,
 } from "react-native";
-import { Avatar, Button, View, XStack } from "tamagui";
+import { Avatar, Button, Spinner, View, XStack } from "tamagui";
 import { TabBarIcon } from "../navigation/TabBarIcon";
 
 const UserTopSection = () => {
+  const { session } = useContext(AuthContext);
+  const [loading, setLoading] = useState(false);
+
+  if (!session) return null;
+
+  const {
+    user: { user_metadata },
+  } = session;
+
   //collect data wit react hook forms
   const form = useForm({
     defaultValues: {
       banner_img:
-        "https://i.ytimg.com/vi/EgGrPReAdDw/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBoECeii-d9KqbrIcBP1lWFBghEtg",
+        user_metadata?.banner_img ??
+        "https://images.pexels.com/photos/221181/pexels-photo-221181.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
       profile_img:
-        "https://images.unsplash.com/photo-1531384441138-2736e62e0919?&w=100&h=100&dpr=2&q=80",
+        user_metadata?.profile_img ??
+        "https://images.pexels.com/photos/810775/pexels-photo-810775.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     },
   });
   const width = useWindowDimensions().width;
@@ -48,6 +64,7 @@ const UserTopSection = () => {
       allowsEditing: true,
       aspect: [16, 9],
       quality: 1,
+      base64: true,
     });
 
     //check if not canceled
@@ -59,15 +76,28 @@ const UserTopSection = () => {
   };
 
   //handle
-  const handleUpdate = () => {
+  const handleUpdate = async () => {
+    setLoading(true);
+
+    //group as object
     const input = {
-      profile_img,
-      banner_img,
+      profile_img: await convertToArrayBuffer(profile_img),
+      banner_img: await convertToArrayBuffer(banner_img),
     };
 
-    alert("Updated");
+    //refactoring
+    const urls = await generatePublicUrls(input);
 
-    // ! Implement SupaBase Image Uploading and save to user profile
+    //Update User Profile and Banner
+    await supabase.auth.updateUser({
+      data: urls,
+    });
+
+    //stop loading
+    setLoading(false);
+
+    //force navigate back (🔴BUG) after updating it redirects to tabs
+    router.navigate("/user");
   };
 
   return (
@@ -122,8 +152,10 @@ const UserTopSection = () => {
                 )}
                 size={"$3"}
                 borderRadius={"$12"}
+                disabled={loading}
+                bg="white"
               >
-                Save
+                {loading ? <Spinner color={"black"} /> : "Save"}
               </Button>
             </XStack>
           )}

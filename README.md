@@ -45,7 +45,8 @@ Tech Stack
 
 ✅ Authentication with Email (Supabase)
 
-Store User Data
+✅ Store User Data
+Update User Profile & Banner
 
 Upload & Store User Videos
 
