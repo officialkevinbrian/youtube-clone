@@ -37,7 +37,10 @@ Tech Stack
 
 ✅ User Profile Screen
 
+
 ## TODO Functionalities 
+
+Implement forms & Data Collection on all inputs 
 
 Authentication with Email (Supabase)
 

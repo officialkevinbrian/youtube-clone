@@ -20,8 +20,21 @@ interface userDataType {
 const UserInput = ({ data }: { data: userDataType }) => {
   const [openSheet, setOpenSheet] = useState<boolean>(false);
 
-  const toggleSheet = () => {
-    setOpenSheet((prev) => !prev);
+  const toggleSheet = (state: boolean | null = null) => {
+    handleSetParams({
+      fieldName: data?.fieldName,
+      value: data?.currentValue,
+      currentValue: data?.currentValue,
+      labelName: data?.label,
+    });
+
+    //multi responsibilities
+    if (state === null) {
+      console.log("The state is null");
+      setOpenSheet((prev) => !prev);
+      return;
+    }
+    setOpenSheet(state);
   };
 
   //this methods sets the router params to be used in sheet form
@@ -36,7 +49,6 @@ const UserInput = ({ data }: { data: userDataType }) => {
     currentValue: string;
     labelName: string;
   }) => {
-    toggleSheet();
     router.setParams({
       labelName,
       fieldName,
@@ -45,9 +57,11 @@ const UserInput = ({ data }: { data: userDataType }) => {
     });
   };
 
+  console.log("------------->", data?.fieldName);
+
   return (
     <>
-      <EditInputSheet open={openSheet} toggle={toggleSheet} />
+      {openSheet && <EditInputSheet open={openSheet} toggle={toggleSheet} />}
       <YStack pt={"$3"}>
         <TextInputCustom.Root px={"$4"}>
           <TextInputCustom.Label label={data?.label} />
@@ -64,16 +78,7 @@ const UserInput = ({ data }: { data: userDataType }) => {
                 <TabBarIcon Icon={CopyIcon} width={25} height={25} />
               </TouchableOpacity>
             ) : (
-              <TouchableOpacity
-                onPress={() => {
-                  handleSetParams({
-                    labelName: data?.label,
-                    fieldName: data?.fieldName,
-                    currentValue: data?.currentValue,
-                    value: data?.currentValue,
-                  });
-                }}
-              >
+              <TouchableOpacity onPress={() => toggleSheet()}>
                 <TabBarIcon Icon={EditIcon} width={25} height={25} />
               </TouchableOpacity>
             )}
