@@ -40,7 +40,7 @@ Tech Stack
 
 ## TODO Functionalities 
 
-Implement forms & Data Collection on all inputs 
+✅ Implement forms & Data Collection on all inputs 
 
 Authentication with Email (Supabase)
 

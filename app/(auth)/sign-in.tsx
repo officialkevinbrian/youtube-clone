@@ -1,10 +1,21 @@
-import YoutubeIcon from "@/assets/icons/YoutubeIconLabel.svg";
+import YouTubeIcon from "@/assets/icons/YoutubeIconLabel.svg";
 import { TabBarIcon } from "@/components/navigation/TabBarIcon";
 import { router, Stack } from "expo-router";
 import React from "react";
+import { Controller, useForm } from "react-hook-form";
 import { Button, Heading, Input, Text, View, YStack } from "tamagui";
 
-const SignInScreen: React.FC = () => {
+const SignInScreen = () => {
+  const form = useForm();
+
+  const handleSubmitForm = (data: any) => {
+    //form submitted
+    if (!data) {
+      alert("Invalid data");
+      return;
+    }
+  };
+
   return (
     <>
       <Stack.Screen
@@ -14,18 +25,36 @@ const SignInScreen: React.FC = () => {
       />
       <View bg={"white"} flex={1} justifyContent="center" p={"$4"} gap={"$6"}>
         <YStack>
-          <TabBarIcon Icon={YoutubeIcon} />
+          <TabBarIcon Icon={YouTubeIcon} />
           <Heading>Let's sign you in</Heading>
           <Text>Sign up with your email here</Text>
         </YStack>
 
         <YStack gap={"$3"}>
-          <InputWithLabel
-            label="Email"
-            placeholder={"Enter your email here..."}
-          />
-          <InputWithLabel label="Password" placeholder={"Password"} />
-          <Button bg={"black"} color={"white"} borderRadius={"$12"}>
+          {inputsList.map((item) => (
+            <Controller
+              name={item.fieldName}
+              control={form.control}
+              render={({ field }) => (
+                <InputWithLabel
+                  key={item.label}
+                  label={item.label}
+                  onBlur={field.onBlur}
+                  value={field.value}
+                  placeholder={item?.placeholder}
+                  onChangeText={field.onChange}
+                />
+              )}
+            />
+          ))}
+          <Button
+            onPress={form.handleSubmit(handleSubmitForm, (err) =>
+              alert("Invalid data")
+            )}
+            bg={"black"}
+            color={"white"}
+            borderRadius={"$12"}
+          >
             Sign in
           </Button>
 
@@ -45,13 +74,7 @@ const SignInScreen: React.FC = () => {
 
 export default SignInScreen;
 
-export const InputWithLabel = ({
-  label,
-  ...rest
-}: {
-  label: string;
-  rest?: any;
-}) => {
+export const InputWithLabel = ({ label, ...rest }: any) => {
   return (
     <YStack>
       <Text>{label}</Text>
@@ -63,9 +86,7 @@ export const InputWithLabel = ({
         borderLeftColor={"$colorTransparent"}
         borderRightColor={"$colorTransparent"}
         borderTopColor={"$colorTransparent"}
-        placeholder="email@gmail.com"
         outlineColor={"$colorTransparent"}
-        {...rest}
         focusStyle={{
           borderRadius: "$0",
           borderBottomWidth: 1,
@@ -76,7 +97,13 @@ export const InputWithLabel = ({
           outlineColor: "$colorTransparent",
         }}
         p={"$0"}
+        {...rest}
       />
     </YStack>
   );
 };
+
+const inputsList = [
+  { id: 1, label: "Email", placeholder: "Email", fieldName: "email" },
+  { id: 2, label: "Password", placeholder: "Password", fieldName: "password" },
+];
