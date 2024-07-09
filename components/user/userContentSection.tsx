@@ -12,16 +12,16 @@ const UserContentSection = () => {
     },
     {
       id: 2,
-      label: "Handle",
+      label: "Channel Name",
       currentValue: "@realkevinbrian",
-      fieldName: "handler_name",
+      fieldName: "channel_name",
     },
     {
       id: 3,
       label: "Channel URL",
       currentValue: "https://www.youtube.com/@realkevinbrian",
       hasCopyBtn: true,
-      fieldName: "channel_name",
+      fieldName: "channel_url",
     },
     {
       id: 4,
