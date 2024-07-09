@@ -1,6 +1,7 @@
 import EditIcon from "@/assets/icons/Edit.svg";
+import CopyIcon from "@/assets/icons/Save.svg";
 import React, { useState } from "react";
-import { Separator, YStack } from "tamagui";
+import { Separator, Text, XStack, YStack } from "tamagui";
 import { TabBarIcon } from "../navigation/TabBarIcon";
 import TextInputCustom from "../TextInputWithLabel";
 import EditInputSheet from "./editInput";
@@ -11,6 +12,8 @@ interface userDataType {
   id: number;
   label: string;
   currentValue: string;
+  hasCopyBtn: boolean;
+  fieldName: string;
 }
 [];
 
@@ -26,13 +29,16 @@ const UserInput = ({ data }: { data: userDataType }) => {
     fieldName,
     value,
     currentValue,
+    labelName,
   }: {
-    fieldName: any;
-    value: any;
-    currentValue: any;
+    fieldName: string;
+    value?: string;
+    currentValue: string;
+    labelName: string;
   }) => {
     toggleSheet();
     router.setParams({
+      labelName,
       fieldName,
       value,
       currentValue,
@@ -45,31 +51,33 @@ const UserInput = ({ data }: { data: userDataType }) => {
       <YStack pt={"$3"}>
         <TextInputCustom.Root px={"$4"}>
           <TextInputCustom.Label label={data?.label} />
-          <TextInputCustom.Input
-            borderWidth={1}
-            readOnly={true}
-            borderColor={"$colorTransparent"}
-            numberOfLines={1}
-            focusStyle={{
-              borderWidth: 1,
-              borderColor: "$colorTransparent",
-            }}
-            // placeholder={"Kevin Brian"}
-            value={data?.currentValue}
-            leftIcon={
+          <XStack justifyContent="space-between" alignItems="center" py={"$2"}>
+            <Text numberOfLines={1} color={"$gray10"}>
+              {data?.currentValue}
+            </Text>
+            {data?.hasCopyBtn ? (
+              <TouchableOpacity
+                onPress={() => {
+                  alert("Text Copied");
+                }}
+              >
+                <TabBarIcon Icon={CopyIcon} width={25} height={25} />
+              </TouchableOpacity>
+            ) : (
               <TouchableOpacity
                 onPress={() => {
                   handleSetParams({
-                    fieldName: "name",
+                    labelName: data?.label,
+                    fieldName: data?.fieldName,
                     currentValue: data?.currentValue,
-                    value: "",
+                    value: data?.currentValue,
                   });
                 }}
               >
                 <TabBarIcon Icon={EditIcon} width={25} height={25} />
               </TouchableOpacity>
-            }
-          />
+            )}
+          </XStack>
         </TextInputCustom.Root>
         <Separator borderColor={"black"} />
       </YStack>

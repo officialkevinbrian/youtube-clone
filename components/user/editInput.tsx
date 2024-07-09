@@ -7,9 +7,7 @@ import { TabBarIcon } from "../navigation/TabBarIcon";
 import { useLocalSearchParams } from "expo-router";
 
 const EditInputSheet = ({ open, toggle }: { open: boolean; toggle?: any }) => {
-  const localParams = useLocalSearchParams();
-
-  console.log("-===========>", localParams);
+  const { labelName, fieldName, value, currentValue } = useLocalSearchParams();
 
   return (
     <Sheet
@@ -23,14 +21,14 @@ const EditInputSheet = ({ open, toggle }: { open: boolean; toggle?: any }) => {
       <Sheet.Overlay />
       <Sheet.Handle />
       <Sheet.Frame>
-        <Stack p={"$4"} gap={"$3"} justifyContent="space-around" flex={1}>
+        <Stack p={"$4"} gap={"$3"} justifyContent="flex-start" flex={1}>
           <TextInputCustom.Root gap={"$2"}>
             <Text fontWeight={"bold"} fontSize={"$7"}>
-              Name
+              {labelName}
             </Text>
             <Input
               autoFocus={true}
-              value="realkevinbrian"
+              value={currentValue}
               borderColor={"black"}
               borderWidth={"$1"}
               bg={"white"}
