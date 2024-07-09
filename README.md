@@ -37,6 +37,7 @@ Tech Stack
 
 ✅ User Profile Screen
 
+Short Videos Screen
 
 ## TODO Functionalities 
 
