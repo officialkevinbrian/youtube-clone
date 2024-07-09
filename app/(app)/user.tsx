@@ -14,7 +14,7 @@ const UserProfileScreen = () => {
       <Stack.Screen
         options={{
           headerShown: true,
-          title: "Channel settings",
+          title: "User Settings",
         }}
       />
 
