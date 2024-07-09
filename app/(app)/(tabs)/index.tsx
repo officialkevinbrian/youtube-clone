@@ -7,11 +7,11 @@ import { XStack } from "tamagui";
 
 function HomeScreen() {
   useEffect(() => {
-    if (true) {
-      return router.navigate("/(auth)/");
-    }
-
-    return () => {};
+    return () => {
+      if (true) {
+        return router.navigate("/(auth)/index");
+      }
+    };
   }, []);
 
   return (

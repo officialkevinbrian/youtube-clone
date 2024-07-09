@@ -16,6 +16,7 @@ const FilterListingTab = () => {
         </Button>
         {filterListing.map((item) => (
           <Button
+            key={item.id}
             size={"$3"}
             bg={item.active ? "black" : "$gray6"}
             color={item.active ? "white" : "black"}

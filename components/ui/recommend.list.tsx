@@ -12,9 +12,9 @@ export default function RecommendVideosList() {
     <>
       {videoListing.map((video: VideoInterface, index: number) => {
         if (index == 1) {
-          return <ShortVideosWrapper />;
+          return <ShortVideosWrapper key={video.video_title} />;
         }
-        return <VideoCard video={video} />;
+        return <VideoCard video={video} key={video.video_title} />;
       })}
     </>
   );

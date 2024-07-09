@@ -46,7 +46,8 @@ export default function RootLayout() {
       <SearchQueryContextProvider>
         <Stack>
           <Stack.Screen name="(app)/(tabs)" options={{ headerShown: false }} />
-          <Stack.Screen name="(auth)" />
+          <Stack.Screen name="(auth)/index" />
+          <Stack.Screen name="(auth)/sign-in" />
           <Stack.Screen name="+not-found" />
         </Stack>
       </SearchQueryContextProvider>
