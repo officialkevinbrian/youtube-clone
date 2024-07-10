@@ -17,7 +17,7 @@ export default function RecommendVideosList() {
     <>
       {videoListing.map((video: YouTubeVideo, index: number) => {
         if (index == 1) {
-          return <ShortVideosWrapper />;
+          return <ShortVideosWrapper key={"short-videos-key"} />;
         }
         return <VideoCard video={video} key={video?.id} />;
       })}

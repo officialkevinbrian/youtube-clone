@@ -54,13 +54,13 @@ function SearchModal() {
               }}
               onChangeText={(text) => setLocalQuery(text)}
             />
-            <TouchableHighlight
+            <TouchableOpacity
               onPress={() => {
                 searchContext?.updateQuery(localQuery);
               }}
             >
               <TabBarIcon Icon={SearchIcon} width={20} height={20} />
-            </TouchableHighlight>
+            </TouchableOpacity>
           </XStack>
 
           {isEmpty(localQuery) && (

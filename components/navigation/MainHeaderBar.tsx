@@ -53,7 +53,7 @@ export default function MainHeaderBar() {
               accessibilityLabel="Cam"
               src={
                 session?.user?.user_metadata?.profile_img ??
-                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHFGgx8C-UHJdCNIPAE3SvMwQPGN_pjuu4tA&s"
+                "https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=600"
               }
             />
             <Avatar.Fallback backgroundColor="black" />
