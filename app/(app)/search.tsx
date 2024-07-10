@@ -1,36 +1,52 @@
 import MainHeaderBar from "@/components/navigation/MainHeaderBar";
+import SpinnerLoader from "@/components/ui/loader";
 import VideoCard from "@/components/ui/video-card";
 import { SearchContext } from "@/context/search.context";
-import videosData from "@/data/video-list.json";
-import { VideoInterface } from "@/type/video.type";
+import useFetchSupabase from "@/hooks/useFetch";
+import { YouTubeVideo } from "@/type/video.type";
 import { Stack } from "expo-router";
-import { isEmpty } from "lodash";
-import React, { useContext, useEffect, useState } from "react";
-import { Heading, ScrollView, View } from "tamagui";
+import { debounce, isEmpty } from "lodash";
+import React, { useContext, useEffect, useMemo, useState } from "react";
+import { ScrollView, Spinner, Text, View } from "tamagui";
 
 const SearchScreen = () => {
-  const [data, setData] = useState<VideoInterface[] | null>([]);
   const searchContext = useContext(SearchContext);
+  const [data, setData] = useState<YouTubeVideo[] | null>(null);
+  const { loading, data: videoListing, error } = useFetchSupabase("videos");
+
+  // Debounced version of the search query
+  const debouncedSearchQuery = useMemo(() => {
+    return debounce((query) => {
+      if (query && videoListing) {
+        const filterData = videoListing.filter((video: YouTubeVideo) =>
+          video?.title.toLowerCase().includes(query.toLowerCase())
+        );
+        setData(filterData);
+      } else {
+        setData(videoListing);
+      }
+    }, 300);
+  }, [videoListing]);
 
   useEffect(() => {
-    //
     if (searchContext?.query) {
-      const filterData = videosData.filter((video) =>
-        video.video_title
-          .toLowerCase()
-          .includes(searchContext?.query.toLowerCase())
-      );
-      setData(filterData);
-      return;
+      debouncedSearchQuery(searchContext.query);
+    } else {
+      setData(videoListing);
     }
 
-    //
-    setData([]);
-
     return () => {
-      console.log("🔴🔴🔴 UnMounting");
+      debouncedSearchQuery.cancel();
     };
-  }, [searchContext?.query]);
+  }, [searchContext?.query, videoListing, debouncedSearchQuery]);
+
+  if (loading) {
+    return <SpinnerLoader />;
+  }
+
+  if (error) {
+    return <Text>Error: {error?.message}</Text>;
+  }
 
   return (
     <ScrollView
@@ -44,13 +60,7 @@ const SearchScreen = () => {
           header: () => <MainHeaderBar />,
         }}
       />
-      <View>
-        {isEmpty(data) && (
-          <Heading py={"$5"} color={"gray"}>
-            Try to such another video
-          </Heading>
-        )}
-      </View>
+      <View>{isEmpty(data) && <Spinner />}</View>
       {data?.map((video, index) => (
         <VideoCard video={video} key={index} />
       ))}

@@ -1,13 +1,13 @@
 import MoreIcon from "@/assets/icons/MoreIcon.svg";
+import { YouTubeShort } from "@/type/video.type";
 import { LinearGradient } from "expo-linear-gradient";
+import { router } from "expo-router";
 import React from "react";
 import { ImageBackground, TouchableOpacity } from "react-native";
 import { Text, View, XStack, YStack } from "tamagui";
 import { TabBarIcon } from "../navigation/TabBarIcon";
-import { VideoInterface } from "@/type/video.type";
-import { router } from "expo-router";
 
-function ShortVideoCard({ video }: { video: VideoInterface }) {
+function ShortVideoCard({ video }: { video: YouTubeShort }) {
   return (
     <TouchableOpacity onPress={() => router.navigate("/shorts")}>
       <View borderRadius={"$3"} overflow="hidden">
@@ -15,7 +15,7 @@ function ShortVideoCard({ video }: { video: VideoInterface }) {
           resizeMode="cover"
           resizeMethod="scale"
           source={{
-            uri: "https://i.ytimg.com/vi/EgGrPReAdDw/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBoECeii-d9KqbrIcBP1lWFBghEtg",
+            uri: video?.thumbnailurl,
           }}
         >
           <LinearGradient
@@ -37,7 +37,7 @@ function ShortVideoCard({ video }: { video: VideoInterface }) {
                   textBreakStrategy="highQuality"
                   lineBreakMode="middle"
                 >
-                  {video?.video_title}
+                  {video?.title}
                 </Text>
               </XStack>
             </YStack>

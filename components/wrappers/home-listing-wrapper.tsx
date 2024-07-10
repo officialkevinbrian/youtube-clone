@@ -1,17 +1,23 @@
+// import videoListing from "@/data/video-list.json";
+import { VideoInterface, YouTubeVideo } from "@/type/video.type";
 import React from "react";
-import { ScrollView, Text, View } from "tamagui";
-import videoListing from "@/data/video-list.json";
+import { Text } from "tamagui";
 import VideoCard from "../ui/video-card";
-import { VideoInterface } from "@/type/video.type";
-import ShortVideosWrapper from "./short-videos.wrapper";
 import ScrollableWrapper from "./scrollable-wrapper";
+import ShortVideosWrapper from "./short-videos.wrapper";
+import useFetchSupabase from "@/hooks/useFetch";
+import SpinnerLoader from "../ui/loader";
 
 function HomePlaylistWrapper() {
+  const { loading, data: videoListing, error } = useFetchSupabase();
+
+  if (loading) return <SpinnerLoader />;
+
   if (!videoListing) return <Text>No Videos</Text>;
 
   return (
     <ScrollableWrapper>
-      {videoListing.map((video: VideoInterface, index: number) => {
+      {videoListing.map((video: YouTubeVideo, index: number) => {
         if (index == 1) {
           return <ShortVideosWrapper key={index} />;
         }

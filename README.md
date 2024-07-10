@@ -4,17 +4,17 @@
 
 Build a YouTube clone with the following features:
 
-● Email-based login screen
-● Home screen with a list of videos
-● Video screen with playback functionality
-● Profile screen with basic settings (name, profile photo, etc.)
-● Search functionality (just text search is fine)
+✅ ● Email-based login screen
+✅ ● Home screen with a list of videos
+🔴 ● Video screen with playback functionality
+✅ ● Profile screen with basic settings (name, profile photo, etc.)
+✅ ● Search functionality (just text search is fine)
 Tech Stack
 ● Frontend: React Native
 ● Backend: Supabase
-○ Implement Supabase authentication
-○ Use Supabase storage for storing videos
-○ Use Supabase database (Postgres) for storing user data
+✅ ○ Implement Supabase authentication
+🔴 ○ Use Supabase storage for storing videos
+✅ ○ Use Supabase database (Postgres) for storing user data
 
 ## Expected Output
 ● Public GitHub repository URL with code & README
@@ -48,7 +48,7 @@ Tech Stack
 ✅ Store User Data
 ✅ Update User Profile & Banner
 
-Upload & Store User Videos
+✅ Upload & Store User Videos
 
 Write Unit Tests atleast 80% Coverage
 

@@ -1,19 +1,10 @@
 import FilterListingTab from "@/components/navigation/FilterBar";
 import MainHeaderBar from "@/components/navigation/MainHeaderBar";
 import HomePlaylistWrapper from "@/components/wrappers/home-listing-wrapper";
-import { router, Stack } from "expo-router";
-import React, { useEffect } from "react";
-import { XStack } from "tamagui";
+import { Stack } from "expo-router";
+import React from "react";
 
 function HomeScreen() {
-  // useEffect(() => {
-  //   return () => {
-  //     if (true) {
-  //       return router.navigate("/(auth)/index");
-  //     }
-  //   };
-  // }, []);
-
   return (
     <>
       <Stack.Screen

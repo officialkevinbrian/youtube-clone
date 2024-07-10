@@ -1,27 +1,35 @@
 import DownloadBtnIcon from "@/assets/icons/Download.svg";
-import FullScreenIcon from "@/assets/icons/Full Screen.svg";
 import LikeBtnIcon from "@/assets/icons/Like.svg";
 import ShareBtnIcon from "@/assets/icons/Share.svg";
 import { TabBarIcon } from "@/components/navigation/TabBarIcon";
+import SpinnerLoader from "@/components/ui/loader";
 import RecommendVideosList from "@/components/ui/recommend.list";
-import PlaybackMiddleButtons from "@/components/video-playback/playback.middle";
-import PlaybackTopBtn from "@/components/video-playback/playback.top-btn";
-import PlayBackWrapper from "@/components/video-playback/playback.wrapper";
 import ScrollableWrapper from "@/components/wrappers/scrollable-wrapper";
+import { useFetchSelect } from "@/hooks/useFetch";
+import { YouTubeVideo } from "@/type/video.type";
 import { AVPlaybackStatus, ResizeMode, Video } from "expo-av";
 import { Stack, useLocalSearchParams } from "expo-router";
 import * as React from "react";
-import { ActivityIndicator, useWindowDimensions } from "react-native";
+import { useWindowDimensions } from "react-native";
 import { Avatar, Button, Text, View, XStack, YStack } from "tamagui";
 
 export default function WatchScreen() {
-  const localQuery = useLocalSearchParams();
+  const { v, id } = useLocalSearchParams() as any;
 
   const videoRef = React.useRef(null);
   const [status, setStatus] = React.useState<AVPlaybackStatus | {}>({});
 
   const widthScreen = useWindowDimensions().width;
   const heightScreen = useWindowDimensions().height;
+
+  if (!id) return null;
+
+  //fetch current video
+  const { loading, data: videoItem, error } = useFetchSelect("videos", id);
+
+  if (loading) return <SpinnerLoader />;
+
+  if (!videoItem) return <SpinnerLoader />;
 
   return (
     <>
@@ -42,7 +50,7 @@ export default function WatchScreen() {
               flex: 1,
             }}
             source={{
-              uri: "https://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4",
+              uri: videoItem?.videourl ?? "",
             }}
             useNativeControls={true}
             resizeMode={ResizeMode.COVER}
@@ -65,19 +73,17 @@ export default function WatchScreen() {
         </XStack>
 
         <YStack px={"$4"}>
-          <Text fontWeight={"bold"}>
-            Build your design system - Lesson 3 : Introduction to design systems
-          </Text>
+          <Text fontWeight={"bold"}>{videoItem?.title}</Text>
           <XStack>
-            <Text fontWeight={"$1"} color={"$gray9"}>
-              270K views 3 days ago Config 2022...
+            <Text fontWeight={"$1"} color={"$gray9"} numberOfLines={1}>
+              {`${videoItem?.views} views `} 3 days ago {videoItem?.description}
             </Text>
           </XStack>
         </YStack>
 
         <ScrollableWrapper>
           <YStack px={"$4"} gap={"$2.5"}>
-            <ChannelPreview />
+            <ChannelPreview video={videoItem} />
             <AddonButtons />
             <PreviewComments />
           </YStack>
@@ -138,19 +144,19 @@ const PreviewComments = () => {
   );
 };
 
-const ChannelPreview = () => {
+const ChannelPreview = ({ video }: { video: YouTubeVideo }) => {
   return (
     <YStack gap={"$3"}>
       <XStack alignItems="center" gap={"$2"}>
         <Avatar circular size="$3">
           <Avatar.Image
             accessibilityLabel="Nate Wienert"
-            src="https://images.unsplash.com/photo-1531384441138-2736e62e0919?&w=100&h=100&dpr=2&q=80"
+            src={video?.thumbnailurl}
           />
           <Avatar.Fallback delayMs={600} backgroundColor="black" />
         </Avatar>
         <Text fontWeight={"bold"}>
-          Figma <Text>62.4K</Text>
+          {video?.channelname} <Text>62.4K</Text>
         </Text>
       </XStack>
     </YStack>

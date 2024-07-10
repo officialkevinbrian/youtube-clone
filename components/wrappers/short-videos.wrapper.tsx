@@ -1,12 +1,17 @@
-import { View, Text } from "react-native";
-import React from "react";
-import { Heading, ScrollView, XStack, YStack } from "tamagui";
-import { TabBarIcon } from "../navigation/TabBarIcon";
 import ShortVideosIcon from "@/assets/icons/ShortVideosIcon.svg";
-import shortVideosData from "@/data/video-list.json";
+import useFetchSupabase from "@/hooks/useFetch";
+import { YouTubeShort } from "@/type/video.type";
+import React from "react";
+import { Heading, ScrollView, Spinner, XStack, YStack } from "tamagui";
+import { TabBarIcon } from "../navigation/TabBarIcon";
 import ShortVideoCard from "../ui/short-video.card";
+import SpinnerLoader from "../ui/loader";
 
 const ShortVideosWrapper = () => {
+  const { loading, data: shortVideosData, error } = useFetchSupabase("shorts");
+
+  if (loading) return <SpinnerLoader />;
+
   return (
     <YStack p={"$3"}>
       <HeaderTitle />
@@ -17,8 +22,8 @@ const ShortVideosWrapper = () => {
         horizontal={true}
         showsHorizontalScrollIndicator={false}
       >
-        {shortVideosData.map((video, index) => (
-          <ShortVideoCard key={index} video={video} />
+        {shortVideosData.map((video: YouTubeShort, index) => (
+          <ShortVideoCard key={video.id} video={video} />
         ))}
       </ScrollView>
     </YStack>
