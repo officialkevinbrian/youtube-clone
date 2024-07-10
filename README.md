@@ -64,3 +64,6 @@ Write Unit Tests atleast 80% Coverage
 
 🚀 Now you can Test the App
 
+
+Feel free to reach out for more information or suggestion for improvements
+kevinbrian.dev@gmail.com
