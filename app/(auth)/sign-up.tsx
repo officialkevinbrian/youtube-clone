@@ -35,6 +35,8 @@ const SignUpScreen = () => {
       password: inputData?.password,
     });
 
+    console.log("==========> LOGIN DATA", data);
+
     //stop loader
     setLoading(false);
 

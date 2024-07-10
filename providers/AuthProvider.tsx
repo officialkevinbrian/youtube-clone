@@ -6,6 +6,7 @@ import { router, useSegments } from "expo-router";
 type ContextProps = {
   user: null | boolean;
   session: Session | null;
+  signOut: () => void;
 };
 
 export const AuthContext = createContext<Partial<ContextProps>>({});
@@ -24,8 +25,6 @@ const AuthProvider = ({ children }: any) => {
 
       const { data: authListener } = supabase.auth.onAuthStateChange(
         async (event, session) => {
-          // console.log("session✅✅", session);
-          // console.log("Event✅✅", event);
           setSession(session);
           setUser(session ? true : false);
 
@@ -47,11 +46,17 @@ const AuthProvider = ({ children }: any) => {
     }
   }, [segments]);
 
+  const signOut = () => {
+    setSession(null);
+    setUser(null);
+  };
+
   return (
     <AuthContext.Provider
       value={{
         user,
         session,
+        signOut,
       }}
     >
       {children}

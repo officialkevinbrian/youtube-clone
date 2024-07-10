@@ -42,10 +42,19 @@ export default function MainHeaderBar() {
               <TabBarIcon Icon={item.icon} width={20} />
             </TouchableOpacity>
           ))}
-          <Avatar circular size="$2.5" onPress={() => router.navigate("/user")}>
+          <Avatar
+            circular
+            size="$2.5"
+            bg={"black"}
+            onPress={() => router.navigate("/user")}
+          >
             <Avatar.Image
+              bg={"black"}
               accessibilityLabel="Cam"
-              src={session?.user?.user_metadata?.profile_img}
+              src={
+                session?.user?.user_metadata?.profile_img ??
+                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHFGgx8C-UHJdCNIPAE3SvMwQPGN_pjuu4tA&s"
+              }
             />
             <Avatar.Fallback backgroundColor="black" />
           </Avatar>

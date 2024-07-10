@@ -1,12 +1,9 @@
-import SpinnerLoader from "@/components/ui/loader";
 import UserContentSection from "@/components/user/userContentSection";
 import UserTopSection from "@/components/user/userTopSection";
-import { supabase } from "@/config/supabase.config";
 import { AuthContext } from "@/providers/AuthProvider";
-import { UserMetadata } from "@supabase/supabase-js";
-import { router, Stack, useNavigation, useSegments } from "expo-router";
-import React, { useContext, useEffect, useLayoutEffect, useState } from "react";
-import { Spinner, View } from "tamagui";
+import { Stack } from "expo-router";
+import React, { useContext } from "react";
+import { Button, View, XStack } from "tamagui";
 
 const UserProfileScreen = () => {
   return (
