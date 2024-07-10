@@ -54,3 +54,13 @@ Write Unit Tests atleast 80% Coverage
 
 
 
+# For ReoKids Assignment Testing Purpose🔴 Not Secure Keeping or Storing Secret Keys in Repositories
+
+`1. Check the Supabase Env in the .env.example and create a new .env file and copy/Paste`
+
+`2. npm install` 
+
+`3. npm start`
+
+🚀 Now you can Test the App
+
