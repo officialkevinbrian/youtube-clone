@@ -13,7 +13,7 @@ Tech Stack
 ● Frontend: React Native
 ● Backend: Supabase
 ✅ ○ Implement Supabase authentication
-🔴 ○ Use Supabase storage for storing videos
+✅ ○ Use Supabase storage for storing videos
 ✅ ○ Use Supabase database (Postgres) for storing user data
 
 ## Expected Output
