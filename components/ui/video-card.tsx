@@ -1,4 +1,4 @@
-import { YouTubeVideo } from "@/type/video.type";
+import { VIDEO_TYPE, YouTubeVideo } from "@/type/video.type";
 import { useVideosViewController } from "@/viewControllers/useVideosViewController";
 import React from "react";
 import { TouchableOpacity } from "react-native";
@@ -10,7 +10,9 @@ const VideoCard = ({ video }: { video: YouTubeVideo }) => {
 
   return (
     <TouchableOpacity
-      onPress={() => handleWatchVideo(video?.videourl, video?.id)}
+      onPress={() =>
+        handleWatchVideo(video?.videourl, video?.id, VIDEO_TYPE.VIDEO)
+      }
     >
       <View gap={"$2"}>
         {/* image */}

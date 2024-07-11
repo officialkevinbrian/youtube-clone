@@ -1,15 +1,3 @@
-export type VideoInterface = {
-  banner_img: string;
-  duration: string;
-  video_title: string;
-  views: string;
-  published_at: string;
-  channel: {
-    profile_picture: string;
-    name: string;
-  };
-};
-
 export interface YouTubeVideo {
   id: string;
   title: string;
@@ -43,4 +31,9 @@ export interface YouTubeShort {
   tags: string[];
   thumbnailurl: string;
   videourl: string;
+}
+
+export enum VIDEO_TYPE {
+  SHORT = "short",
+  VIDEO = "video",
 }

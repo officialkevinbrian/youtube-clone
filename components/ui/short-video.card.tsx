@@ -1,15 +1,20 @@
 import MoreIcon from "@/assets/icons/MoreIcon.svg";
-import { YouTubeShort } from "@/type/video.type";
+import { VIDEO_TYPE, YouTubeShort } from "@/type/video.type";
+import { useVideosViewController } from "@/viewControllers/useVideosViewController";
 import { LinearGradient } from "expo-linear-gradient";
-import { router } from "expo-router";
 import React from "react";
 import { ImageBackground, TouchableOpacity } from "react-native";
 import { Text, View, XStack, YStack } from "tamagui";
 import { TabBarIcon } from "../navigation/TabBarIcon";
 
 function ShortVideoCard({ video }: { video: YouTubeShort }) {
+  const { handleWatchVideo } = useVideosViewController();
   return (
-    <TouchableOpacity onPress={() => router.navigate("/shorts")}>
+    <TouchableOpacity
+      onPress={() =>
+        handleWatchVideo(video?.videourl, video?.id, VIDEO_TYPE.SHORT)
+      }
+    >
       <View borderRadius={"$3"} overflow="hidden">
         <ImageBackground
           resizeMode="cover"

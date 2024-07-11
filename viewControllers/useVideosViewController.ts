@@ -3,8 +3,12 @@ import { router } from "expo-router";
 
 export const useVideosViewController = () => {
   //logic to view single video
-  const handleWatchVideo = (videoUrl: string, videoId: string) => {
-    router.push("/watch");
+  const handleWatchVideo = (
+    videoUrl: string,
+    videoId: string,
+    videoType: string
+  ) => {
+    router.push(videoType === "video" ? "/watch" : "/short");
     router.setParams({
       v: videoUrl,
       id: videoId,
