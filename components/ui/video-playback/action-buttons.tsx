@@ -2,12 +2,15 @@ import DownloadBtnIcon from "@/assets/icons/Download.svg";
 import LikeBtnIcon from "@/assets/icons/Like.svg";
 import ShareBtnIcon from "@/assets/icons/Share.svg";
 import { TabBarIcon } from "@/components/navigation/TabBarIcon";
+import { useWatchController } from "@/viewControllers/useWatchController";
 import React from "react";
 import { Button, Text, XStack } from "tamagui";
 
 export const AddonButtons = () => {
+  const { data } = useWatchController();
+
   const addonButtonsListing = [
-    { icon: LikeBtnIcon, value: "652", id: 1, handler: () => {} },
+    { icon: LikeBtnIcon, value: data?.likes + "K", id: 1, handler: () => {} },
     { icon: ShareBtnIcon, label: "Share", id: 2, handler: () => {} },
     { icon: DownloadBtnIcon, label: "Download", id: 3, handler: () => {} },
   ];
