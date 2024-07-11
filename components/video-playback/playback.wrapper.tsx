@@ -1,7 +1,7 @@
 import FullScreenIcon from "@/assets/icons/Full Screen.svg";
 import React, { useState } from "react";
 import { ActivityIndicator } from "react-native";
-import { Text, XStack, YStack } from "tamagui";
+import { Spinner, Text, XStack, YStack } from "tamagui";
 import { TabBarIcon } from "../navigation/TabBarIcon";
 import PlaybackMiddleButtons from "./playback.middle";
 import PlaybackTopBtn from "./playback.top-btn";
@@ -27,7 +27,7 @@ const PlayBackWrapper = ({
       opacity={isPlaybackHidden ? 1 : 0}
     >
       <PlaybackTopBtn />
-      {videoStatus?.isBuffering && <ActivityIndicator />}
+      {videoStatus?.isBuffering && <Spinner color={"white"} size="large" />}
       {videoStatus?.isBuffering ||
         (isPlaybackHidden && (
           <PlaybackMiddleButtons

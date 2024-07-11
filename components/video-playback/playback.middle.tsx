@@ -1,5 +1,6 @@
 import NextIcon from "@/assets/icons/NextIcon.svg";
 import PauseIcon from "@/assets/icons/PauseIcon.svg";
+import PlayIcon from "@/assets/icons/play-btn.svg";
 import PrevIcon from "@/assets/icons/Previous.svg";
 import { TabBarIcon } from "@/components/navigation/TabBarIcon";
 import React from "react";
@@ -13,12 +14,10 @@ const PlaybackMiddleButtons = ({
   videoRef: any;
   videoStatus: any;
 }) => {
-  console.log("video reference--->", videoStatus.isPlaying);
-
   const middleBtnAddons = [
     { icon: PrevIcon, id: 2, handler: () => {} },
     {
-      icon: PauseIcon,
+      icon: videoStatus?.isPlaying ? PauseIcon : PlayIcon,
       id: 3,
       handler: () =>
         videoStatus.isPlaying
