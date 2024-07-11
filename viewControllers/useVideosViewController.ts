@@ -8,7 +8,7 @@ export const useVideosViewController = () => {
     videoId: string,
     videoType: string
   ) => {
-    router.push(videoType === "video" ? "/watch" : "/short");
+    router.push(videoType === "video" ? "/watch" : "/shorts");
     router.setParams({
       v: videoUrl,
       id: videoId,

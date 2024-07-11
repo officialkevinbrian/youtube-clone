@@ -5,11 +5,9 @@ import React from "react";
 function ShortsScreen() {
   return (
     <>
-      {shortVideosList
-        .filter((item, index) => index === 9)
-        .map((item) => (
-          <ShortVideoFull video={item} key={item.video_title} />
-        ))}
+      {shortVideosList.map((item) => (
+        <ShortVideoFull video={item} key={item.title} />
+      ))}
     </>
   );
 }
