@@ -4,7 +4,7 @@ import PrevIcon from "@/assets/icons/Previous.svg";
 import { TabBarIcon } from "@/components/navigation/TabBarIcon";
 import React from "react";
 import { TouchableOpacity } from "react-native";
-import { View, XStack } from "tamagui";
+import { XStack } from "tamagui";
 
 const PlaybackMiddleButtons = ({
   videoRef,
@@ -13,7 +13,7 @@ const PlaybackMiddleButtons = ({
   videoRef: any;
   videoStatus: any;
 }) => {
-  console.log("video reference--->", videoStatus.isBuffering);
+  console.log("video reference--->", videoStatus.isPlaying);
 
   const middleBtnAddons = [
     { icon: PrevIcon, id: 2, handler: () => {} },
@@ -28,7 +28,6 @@ const PlaybackMiddleButtons = ({
     { icon: NextIcon, id: 4, handler: () => {} },
   ];
 
-  return <View />;
   return (
     <XStack flex={1} justifyContent="center" alignItems="center" gap={"$5"}>
       {middleBtnAddons.map((item) => (
