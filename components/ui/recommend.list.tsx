@@ -2,7 +2,7 @@ import { VideoInterface, YouTubeVideo } from "@/type/video.type";
 import React from "react";
 import { Text, XStack } from "tamagui";
 import VideoCard from "../ui/video-card";
-import ShortVideosWrapper from "../wrappers/short-videos.wrapper";
+import ShortVideosWrapper from "../../models/shortVideoContent";
 import useFetchSupabase from "@/hooks/useFetch";
 import SpinnerLoader from "./loader";
 

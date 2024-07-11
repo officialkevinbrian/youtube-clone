@@ -1,4 +1,4 @@
-import VideosView from "@/views/videosView";
+import VideosView from "@/views/contentView";
 import WatchView from "@/views/watchView";
 import React from "react";
 import { View } from "tamagui";
