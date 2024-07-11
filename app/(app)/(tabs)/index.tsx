@@ -1,6 +1,6 @@
 import FilterListingTab from "@/components/navigation/FilterBar";
 import MainHeaderBar from "@/components/navigation/MainHeaderBar";
-import HomePlaylistWrapper from "@/components/wrappers/home-listing-wrapper";
+import VideosView from "@/views/videosView";
 import { Stack } from "expo-router";
 import React from "react";
 
@@ -14,7 +14,7 @@ function HomeScreen() {
         }}
       />
       <FilterListingTab />
-      <HomePlaylistWrapper />
+      <VideosView />
     </>
   );
 }

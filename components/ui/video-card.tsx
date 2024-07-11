@@ -1,23 +1,16 @@
+import { YouTubeVideo } from "@/type/video.type";
+import { useVideosViewController } from "@/viewControllers/useVideosViewController";
 import React from "react";
+import { TouchableOpacity } from "react-native";
 import { Avatar, Image, Text, View, XStack, YStack } from "tamagui";
-import { TabBarIcon } from "../navigation/TabBarIcon";
-import MoreIcon from "@/assets/icons/Add.svg";
-import { VideoInterface, YouTubeVideo } from "@/type/video.type";
-import { Touchable, TouchableOpacity } from "react-native";
-import { router } from "expo-router";
-
-// import { Container } from './styles';
 
 const VideoCard = ({ video }: { video: YouTubeVideo }) => {
+  //Consume from controller
+  const { handleWatchVideo } = useVideosViewController();
+
   return (
     <TouchableOpacity
-      onPress={() => {
-        router.navigate("/(app)/watch");
-        router.setParams({
-          v: video.videourl,
-          id: video.id,
-        });
-      }}
+      onPress={() => handleWatchVideo(video?.videourl, video?.id)}
     >
       <View gap={"$2"}>
         {/* image */}
