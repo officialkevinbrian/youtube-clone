@@ -3,7 +3,7 @@ import { YouTubeVideo } from "@/type/video.type";
 import { useVideosViewController } from "@/viewControllers/useVideosViewController";
 import React from "react";
 import { FlatList } from "react-native";
-import { Spinner, Text, View } from "tamagui";
+import { Text, View } from "tamagui";
 
 const VideosView: React.FC = () => {
   const { videos, loading } = useVideosViewController() as any;
